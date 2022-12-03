@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ng-todo-kanbanboard": {
+      "hosting": {
+        "ngtodoapp": [
+          "ng-todo-kanbanboard"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ng-todo-kanbanboard"
+  }
+}
