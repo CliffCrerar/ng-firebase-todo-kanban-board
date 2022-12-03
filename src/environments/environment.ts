@@ -1,6 +1,7 @@
 
 
-import { environment } from "./environment.master";
+import { env } from "./environment.master";
 
+env.production = false;
 
-export {environment}
+export const environment = env;

@@ -33,20 +33,7 @@
               "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
-            "fileReplacements": [
-              {
-                "src": "./src/environments/environment.ts",
-                "replaceWith": "./src/environments/environment.prod.ts"
-              }
-            ],
-            "buildOptimizer": true,
-            "optimization": true,
-            "vendorChunk": true,
-            "extractLicenses": true,
-            "sourceMap": true,
-            "namedChunks": true,
-            "scripts": [],
-            "outputHashing": "all"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -61,15 +48,28 @@
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
-              ]
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "./src/environments/environment.ts",
+                  "with": "./src/environments/environment.prod.ts"
+                }
+              ],
+              "buildOptimizer": true,
+              "optimization": true,
+              "vendorChunk": true,
+              "extractLicenses": true,
+              "sourceMap": false,
+              "namedChunks": true
             },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
+              "vendorChunk": false,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "outputHashing": "none"
             }
           },
           "defaultConfiguration": "production"
@@ -81,6 +81,8 @@
               "browserTarget": "ngtodoapp:build:production"
             },
             "development": {
+              "open": true,
+              "liveReload": true,
               "browserTarget": "ngtodoapp:build:development"
             }
           },

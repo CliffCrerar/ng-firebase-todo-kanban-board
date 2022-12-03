@@ -1,7 +1,17 @@
 
 
-import {environment} from './environment.master';
+import { env } from './environment.master';
 
-environment.production = true;
+env.production = true;
 
-export {environment};
+// env.firebaseConfig = {
+//     apiKey,
+//     appId,
+//     authDomain,
+//     measurementId,
+//     messagingSenderId,
+//     projectId,
+//     storageBucket
+// }
+
+export const environment: Environment = env;

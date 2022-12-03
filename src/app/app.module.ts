@@ -17,11 +17,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
 import { environment } from 'src/environments/environment';
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { FirebaseAppModule } from '@angular/fire/app';
+import {  FirestoreModule } from '@angular/fire/firestore';
 
-const MyFirebaseAppModule = provideFirebaseApp(() => initializeApp(environment.fireBaseConfig));
-const MyFireStoreModule = provideFirestore(() => getFirestore());
+// const MyFirebaseAppModule = provideFirebaseApp(() => initializeApp(environment.firebaseConfig));
+// const MyFireStoreModule = provideFirestore(() => getFirestore());
 
 @NgModule({
   declarations: [
@@ -30,8 +30,8 @@ const MyFireStoreModule = provideFirestore(() => getFirestore());
     TaskDialogComponent
   ],
   imports: [
-    MyFirebaseAppModule,
-    MyFireStoreModule,
+    FirestoreModule,
+    FirebaseAppModule,
     MatCardModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -47,8 +47,7 @@ const MyFireStoreModule = provideFirestore(() => getFirestore());
     MatInputModule
   ],
   providers: [
-
-
+    
   ],
   bootstrap: [AppComponent]
 })

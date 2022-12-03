@@ -11,8 +11,6 @@ environment.production
   : console.log("%c DEV ENVIRONMENT", "color: dodgerblue")
 
 
-
-
-
-platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
   .catch(err => console.error(err));

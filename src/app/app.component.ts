@@ -6,6 +6,7 @@ import { Task, TaskDialogResult } from './task/task.model';
 
 import { Observable } from 'rxjs';
 import { Firestore, collection, collectionChanges, collectionData, DocumentData, CollectionReference } from '@angular/fire/firestore';
+import { firebaseApp$ } from '@angular/fire/app';
 
 @Component({
   selector: 'app-root',
@@ -47,8 +48,10 @@ export class AppComponent {
   }
   
   editTask(list: 'done' | 'todo' | 'inProgress', task: Task): void {
+    console.log(list);
+    console.log(task);
+    
     const dialogRef = this.dialog.open(TaskDialogComponent, {
-      width: '270px',
       data: {
         task,
         enableDelete: true,
@@ -60,8 +63,15 @@ export class AppComponent {
       }
       if (result.delete) {
         // this.store.collection(list).doc(task.id).delete();
+        console.log(list);
+        console.log(list);
+        
       } else {
         // this.store.collection(list).doc(task.id).update(task);
+        console.log(list);
+        console.log(list);
+        
+        
       }
     });
   }
@@ -90,9 +100,10 @@ export class AppComponent {
     // );
   }
 
-  newTask(): void {
+  newTask(event: Event): void {
+    console.log(event);
+    
     const dialogRef = this.dialog.open(TaskDialogComponent, {
-      width: '270px',
       data: {
         task: {},
       },
@@ -100,10 +111,18 @@ export class AppComponent {
     dialogRef
       .afterClosed()
       .subscribe((result: TaskDialogResult | undefined) => {
+        console.log(result);
+        
         if (!result) {
           return;
         }
-        this.todo$
+
+        firebaseApp$.subscribe(fbapp=>{
+          console.log(fbapp);
+          
+          
+        })
+        
         // this.store.app
       });
   }
