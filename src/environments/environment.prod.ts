@@ -2,6 +2,6 @@
 
 import {environment} from './environment.master';
 
-environment.produtuction = true;
+environment.production = true;
 
 export {environment};

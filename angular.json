@@ -33,7 +33,20 @@
               "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "fileReplacements": [
+              {
+                "src": "./src/environments/environment.ts",
+                "replaceWith": "./src/environments/environment.prod.ts"
+              }
+            ],
+            "buildOptimizer": true,
+            "optimization": true,
+            "vendorChunk": true,
+            "extractLicenses": true,
+            "sourceMap": true,
+            "namedChunks": true,
+            "scripts": [],
+            "outputHashing": "all"
           },
           "configurations": {
             "production": {
@@ -47,13 +60,6 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
-                }
-              ],
-              "outputHashing": "all",
-              "fileReplacements": [
-                {
-                  "src": "./src/environments/environment.ts",
-                  "replaceWith": "./src/environments/environment.prod.ts"
                 }
               ]
             },

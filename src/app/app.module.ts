@@ -11,15 +11,18 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TaskComponent } from './task/task.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TaskDialogComponent } from './task-dialog/task-dialog.component';
-import {MatFormFieldModule} from '@angular/material/form-field'
+import { MatFormFieldModule } from '@angular/material/form-field'
 import { FormsModule } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 import { environment } from 'src/environments/environment';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
- 
+
+const MyFirebaseAppModule = provideFirebaseApp(() => initializeApp(environment.fireBaseConfig));
+const MyFireStoreModule = provideFirestore(() => getFirestore());
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,8 +30,8 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     TaskDialogComponent
   ],
   imports: [
-    provideFirebaseApp(() => initializeApp( environment.fireBaseConfig)),
-    provideFirestore(()=> getFirestore()),
+    MyFirebaseAppModule,
+    MyFireStoreModule,
     MatCardModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -43,7 +46,10 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     FormsModule,
     MatInputModule
   ],
-  providers: [provideFirebaseApp(() => initializeApp( environment.fireBaseConfig)),],
+  providers: [
+
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,11 @@
 {
-  "name": "ngtodoapp",
-  "version": "0.0.0",
+  "name": "ng-fire-base-kanban-board-todo-app",
+  "version": "1.0.0",
+  "author": {
+    "name": "Cliff Crerar",
+    "email": "me@cliffcrerar.tech",
+    "url": "https://www.cliffcrerar.tech"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

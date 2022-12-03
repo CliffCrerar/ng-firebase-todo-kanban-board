@@ -1,6 +1,6 @@
 
 import fireBaseConfig from '../config.json';
 export const environment = {
-    produtuction: false,
+    production: false,
     fireBaseConfig
 };
