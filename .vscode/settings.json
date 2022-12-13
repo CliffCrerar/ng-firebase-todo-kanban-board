@@ -1,0 +1,29 @@
+{
+    "angular.trace.server": "messages",
+    "angular.view-engine": false,
+    "angular-template-formatter.closeTagSameLine": true,
+    "angular-template-formatter.indentWidth": 2,
+    "angular-template-formatter.useSpaces": false,
+    "vscode-angular-html.colorCustomizations": true,
+    "files.associations": {
+        "*.html": "html",
+        "*.component.html": "html"
+    },
+    "files.trimFinalNewlines": true,
+    "html.format.enable": false,
+    "angular-template-formatter.skipContents": [
+        "p",
+        "li",
+        "span",
+        "em",
+        "strong",
+        "i",
+        "b",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6"
+    ]
+}

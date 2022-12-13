@@ -1,6 +1,7 @@
 
-import fireBaseConfig from '../config.json';
-export const environment = {
-    produtuction: false,
-    fireBaseConfig
+import config from '../config.json';
+
+export const env: Environment = {
+    production: false,
+    firebaseConfig: (config as {firebaseConfig: FireBaseConfig}).firebaseConfig
 };

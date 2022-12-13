@@ -6,6 +6,7 @@
 /out-tsc
 /bazel-out
 config.json
+debug.log
 
 # Node
 /node_modules

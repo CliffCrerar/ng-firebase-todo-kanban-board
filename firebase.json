@@ -31,5 +31,21 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "emulators": {
+    "auth": {
+      "port": 8008
+    },
+    "firestore": {
+      "port": 8009
+    },
+    "hosting": {
+      "port": 8010
+    },
+    "ui": {
+      "enabled": true,
+      "port": 8001
+    },
+    "singleProjectMode": true
   }
 }

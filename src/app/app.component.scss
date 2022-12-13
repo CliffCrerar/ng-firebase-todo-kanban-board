@@ -2,23 +2,39 @@ mat-toolbar {
     margin-bottom: 20px;
 }
 
+.app-root::ng-deep{
+    min-height: 100vh !important;
+}
+
+mat-card {
+    margin-bottom: 25px;
+}
+
+mat-card-content button {
+    margin-right: 15px;
+}
+
 mat-toolbar>span {
     margin-left: 10px;
 }
 
 .content-wrapper {
-    max-width: 1400px;
+    flex: 1;
     margin: auto;
+    height: 100%;
+    max-width: 100%;
+    width: 80vw;
 }
 
 .container-wrapper {
-    display: flex;
-    justify-content: space-around;
+    grid-column-gap: 10px;
+    display: grid;
+    grid-template-columns: auto auto auto;
 }
 
 .container {
-    width: 400px;
-    margin: 0 25px 25px 0;
+    // width: 100%;
+    margin: 0 0 0 0;
 }
 
 .list {
