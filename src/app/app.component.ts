@@ -8,7 +8,8 @@ import {catchError, finalize, merge, mergeAll, Observable, Subscription} from 'r
 import {
 	Firestore, QueryDocumentSnapshot, collection, collectionData, CollectionReference, setDoc, doc, runTransaction, docData, getDocs, getDoc, collectionSnapshots
 } from '@angular/fire/firestore';
-import {promisify} from "./utils/promisify";
+import {promisifyObservable} from "./utils/promisify-observable";
+import {AppFirestoreCollection} from "./models/task-collection.model";
 
 
 @Component({
@@ -16,14 +17,8 @@ import {promisify} from "./utils/promisify";
 })
 export class AppComponent {
 	[idx: string]: any;
-
-	todoCollection: CollectionReference<Task>;
-	inProgressCollection: CollectionReference<Task>;
-	doneCollection: CollectionReference<Task>;
-	todo$: Observable<QueryDocumentSnapshot<Task>[]>;
-	inProgress$: Observable<QueryDocumentSnapshot<Task>[]>;
-	done$: Observable<QueryDocumentSnapshot<Task>[]>;
 	title = 'ngtodoapp';
+
 	dataSnapshots: { todo: Task[], inProgress: Task[], done: Task[] }
 
 	constructor(private dialog: MatDialog, private fireStore: Firestore) {
@@ -35,18 +30,25 @@ export class AppComponent {
 		console.log(fireStore.type);
 		console.log(fireStore.app);
 
-		this.todoCollection = collection(this.fireStore, 'todo') as CollectionReference<Task>;
-		this.inProgressCollection = collection(this.fireStore, 'inProgress') as CollectionReference<Task>;
-		this.doneCollection = collection(this.fireStore, 'done') as CollectionReference<Task>;
-
-		this.todo$ = collectionSnapshots(this.todoCollection);
-		this.inProgress$ = collectionSnapshots(this.inProgressCollection);
-		this.done$ = collectionSnapshots(this.doneCollection);
 		this.dataSnapshots = {todo: [], inProgress: [], done: []}
+		// const dataObservers: Observable<QueryDocumentSnapshot<Task>[]>[] = [this.todo$, this.inProgress$, this.done$]
 
-		Promise.all([this.todo$, this.inProgress$, this.done$]
-			.map(collectionSnapShots => promisify(collectionSnapShots)))
-			.then(result => {console.log(result)})
+		// Promise.all(dataObservers.map((collectionSnapShots: Observable<QueryDocumentSnapshot<Task>[]>) =>
+		// 	promisifyObservable<QueryDocumentSnapshot<Task>[]>(collectionSnapShots)))
+		// 	.then(result => {
+		// 		console.log(result)
+		// 		result.forEach((resolvedPromise,idx)=>{
+		// 			console.log(resolvedPromise)
+		// 		})
+		// 	})
+
+		const todo = new AppFirestoreCollection<Task>(this.fireStore, 'todo')
+			.getSimplerCollection()
+			.subscribe({
+				next: value => console.log(value),
+				error: err => console.error(err),
+				complete: () => console.info('AppFirestoreCollection COMPLETED')
+			})
 
 	}
 
@@ -157,7 +159,6 @@ export class AppComponent {
 		console.log(event);
 
 
-		const docRef = doc(this.todoCollection);
 		const dialogRef = this.dialog.open(TaskDialogComponent, {
 			data: {
 				task: {},
@@ -169,7 +170,7 @@ export class AppComponent {
 				if (!result) {
 					return;
 				}
-				setDoc(docRef, result.task).catch(catchError)
+				// setDoc(docRef, result.task).catch(catchError)
 			});
 	}
 

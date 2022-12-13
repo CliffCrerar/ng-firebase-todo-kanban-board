@@ -1,5 +1,6 @@
 
 
+
 declare type stringOrUndefined = string | undefined
 
 declare interface FireBaseConfig {
@@ -39,3 +40,26 @@ interface global {
 declare module 'global' {
     interface process extends global {}
 }
+
+declare module 'TaskCollectionTypes' {
+	import {CollectionReference, QueryDocumentSnapshot, DocumentSnapshot, DocumentReference} from "@angular/fire/firestore";
+
+	interface FirebaseDocumentMeta<T> {
+		snapShot: DocumentSnapshot<T>;
+		ref: DocumentReference<T>;
+	}
+
+	interface FireBaseDocument<T> {
+		value: T;
+		meta: FirebaseDocumentMeta<T>
+	}
+
+	interface FirebaseResolvedCollection<T> {
+		name: string;
+		ref: CollectionReference<T>;
+		snapShots: DocumentSnapshot<T>[];
+		documents: FireBaseDocument<T>[];
+	}
+	export {FirebaseResolvedCollection,FireBaseDocument,FirebaseDocumentMeta}
+}
+

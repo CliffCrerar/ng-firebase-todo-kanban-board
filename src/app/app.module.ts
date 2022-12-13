@@ -15,9 +15,9 @@ import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {environment} from 'src/environments/environment';
-import {initializeApp, provideFirebaseApp} from '@angular/fire/app';
+import {FirebaseApps, initializeApp, provideFirebaseApp} from '@angular/fire/app';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
-const NgTodoAppFirebaseAppModule = provideFirebaseApp(() => initializeApp(environment.firebaseConfig));
+const NgTodoAppFirebaseAppModule = provideFirebaseApp(() => initializeApp());
 const NgTodoAppMyFireStoreModule = provideFirestore(() => getFirestore());
 
 @NgModule({
